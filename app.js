@@ -13,7 +13,8 @@ const cors         = require('cors');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/wedding-express', {useMongoClient: true})
+// 'mongodb://localhost/wedding-express'
+  .connect(process.env.MONGODB_URI, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -56,5 +57,8 @@ app.use(cors());
 const index = require('./routes/index');
 app.use('/', index);
 
+app.use((req,res,next) => {
+  res.sendFile(__dirname + '/public/wedding-angular/index.html')
+});
 
 module.exports = app;
