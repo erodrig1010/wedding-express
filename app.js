@@ -58,7 +58,7 @@ const index = require('./routes/index');
 app.use('/', index);
 
 app.use((req,res,next) => {
-  res.sendFile(__dirname + '/public/wedding-angular/index.html')
+  res.sendFile(__dirname + '/public/index.html')
 });
 
 module.exports = app;
