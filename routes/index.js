@@ -1,6 +1,12 @@
 const express = require('express');
 const router  = express.Router();
 const Song = require('../models/song')
+var http = require("http");
+
+
+setInterval(function() {
+    http.get("http://ybwedding.herokuapp.com");
+}, 1500000); // every 5 minutes (300000)
 
 // Home Page
 /* GET home page */
