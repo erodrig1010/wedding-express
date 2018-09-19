@@ -10,7 +10,6 @@ const logger       = require('morgan');
 const path         = require('path');
 const session      = require("express-session");
 const app          = express();
-const flash        = require("connect-flash");
 const cors         = require('cors');
 
 
