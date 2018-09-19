@@ -8,6 +8,7 @@ setInterval(function() {
     http.get("http://ybwedding.herokuapp.com");
 }, 1500000); // every 5 minutes (300000)
 
+
 // Home Page
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -43,9 +44,9 @@ router.post('/song-request', (req, res, next) => {
   const newSong = {
     song: req.body.song,
   }
-  Task.create(newSong)
-  .then((requestJustCreated) => {
-    res.json(requestJustCreated)
+  Song.create(newSong)
+  .then((songJustCreated) => {
+    res.json(songJustCreated)
   })
   .catch((err) => {
     res.json(err)

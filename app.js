@@ -8,13 +8,17 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const session      = require("express-session");
+const app          = express();
+const flash        = require("connect-flash");
 const cors         = require('cors');
 
 
 mongoose.Promise = Promise;
 mongoose
 // 'mongodb://localhost/wedding-express'
-  .connect(process.env.MONGODB_URI, {useMongoClient: true})
+// process.env.MONGODB_URI
+  .connect('mongodb://localhost/wedding-express', {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -24,7 +28,7 @@ mongoose
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
-const app = express();
+// const app = express();
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -43,14 +47,15 @@ app.use(require('node-sass-middleware')({
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(favicon(path.join(__dirname, 'public', 'assets', 'images', 'favicon.ico')));
 
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Yani and Brian 2019';
 
+// app.use(flash());
 app.use(cors());
 
 
