@@ -17,7 +17,7 @@ mongoose.Promise = Promise;
 mongoose
 // 'mongodb://localhost/wedding-express'
 // process.env.MONGODB_URI
-  .connect('mongodb://localhost/wedding-express', {useMongoClient: true})
+  .connect(process.env.MONGODB_URI, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
